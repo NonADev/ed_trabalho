@@ -1,11 +1,13 @@
 package main.ed_sis.domain.models;
 
 public class Usuario {
-    private int id;
+    private Integer id;
     private String nome;
     private String RG;
-    private Long CPF;
-    private Character sexo;
+    private String CPF;
+    private String sexo;
+    private String email;
+    private String senha;
 
     public Usuario() {
     }
@@ -14,15 +16,15 @@ public class Usuario {
         this.nome = _nome;
     }
 
-    public static void test(){
+    public static void test() {
 
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -38,23 +40,40 @@ public class Usuario {
         return RG;
     }
 
-    public void setRG(String RG) {
-        this.RG = RG;
+    public void setRG(String rG) {
+        RG = rG;
     }
 
-    public Long getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(Long CPF) {
-        this.CPF = CPF;
+    public void setCPF(String cPF) {
+        CPF = cPF;
     }
 
-    public Character getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(Character sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
 }
