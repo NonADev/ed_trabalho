@@ -5,16 +5,6 @@ import main.ed_sis.domain.models.Usuario;
 public class PilhaUsuario {
     private Usuario dado[];
 
-    public static void main(String[] args) {
-        PilhaUsuario p = new PilhaUsuario();
-        p.empilhar(new Usuario("Cesar"));
-        p.empilhar(new Usuario("Luscas"));
-        p.desempilhar();
-        p.desempilhar();
-
-        p.print();
-    }
-
     public Usuario desempilhar() {
         if (this.dado == null)
             return null;
