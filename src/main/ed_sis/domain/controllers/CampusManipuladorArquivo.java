@@ -7,16 +7,14 @@ import java.io.*;
 import java.util.Random;
 
 public class CampusManipuladorArquivo {
-    public static void main(String[] args) throws IOException {
-        CampusManipuladorArquivo campusManipuladorArquivo = new CampusManipuladorArquivo();
-        Campus campus = new Campus("1;wesley;place_holder;place_holder;place_holder;place_holder;4");
-
-        campusManipuladorArquivo.insertCampus(campus);
-
-        campusManipuladorArquivo.update(new Campus("721399;judite;jandira;place_holder;place_holder;place_holder;4"));
-
-        campusManipuladorArquivo.delete(990247);
-    }
+//    public static void main(String[] args) throws IOException {
+//        CampusManipuladorArquivo campusManipuladorArquivo = new CampusManipuladorArquivo();
+//        Campus campus = campusManipuladorArquivo.findById(727640);
+//
+//        campus.setNome("krustacio");
+//
+//        campusManipuladorArquivo.update(campus);
+//    }
 
     public boolean delete(Integer _id) throws IOException {
         File campusFile = new File("files/", "Campus.txt");
@@ -77,10 +75,11 @@ public class CampusManipuladorArquivo {
         BufferedReader bufferedReader = new BufferedReader(new FileReader("files/Campus.txt"));
 
         for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine()) {
-            if (Integer.parseInt(linha.split(";")[0]) == _id)
+            if (Integer.parseInt(linha.split(";")[0]) == _id) {
+                bufferedReader.close();
                 return new Campus(linha);
+            }
         }
-
         bufferedReader.close();
         return null;
     }

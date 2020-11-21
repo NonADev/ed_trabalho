@@ -1,5 +1,6 @@
 package main.ed_sis.domain.controllers;
 
+import main.ed_sis.domain.estruturas.PilhaUsuario;
 import main.ed_sis.domain.models.Admin;
 import main.ed_sis.domain.models.Usuario;
 
@@ -7,6 +8,100 @@ import java.io.*;
 import java.util.Random;
 
 public class UsuarioAdminManipuladorArquivo {
+//    public static void main(String[] args) throws IOException {
+//        UsuarioAdminManipuladorArquivo usuarioAdminManipuladorArquivo = new UsuarioAdminManipuladorArquivo();
+//
+//        Usuario u = usuarioAdminManipuladorArquivo.getUsuarioById(850785);
+//        u.setNome("wellingtron");
+//
+//        usuarioAdminManipuladorArquivo.update(u);
+//
+//        PilhaUsuario pilhaUsuario = usuarioAdminManipuladorArquivo.getAllUsuarios();
+//        pilhaUsuario.print();
+//    }
+
+    public Usuario getUsuarioById(Integer _id) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("files/Usuario.txt"));
+
+        for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine()) {
+            if (Integer.parseInt(linha.split(";")[0]) == _id) {
+                bufferedReader.close();
+                return new Usuario(linha);
+            }
+        }
+
+        bufferedReader.close();
+        return null;
+    }
+
+    public boolean update(Usuario _usuario) throws IOException {
+        File usuariosFile = new File("files/", "Usuario.txt");
+        File tempFile = new File("files/", "tempFile.txt");
+
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(usuariosFile));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tempFile, false));
+
+        boolean hasBeenUpdated = false;
+        int i = 0;
+        for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine(), i++) {
+            if (Integer.parseInt(linha.split(";")[0]) == _usuario.getId()) {
+                hasBeenUpdated = true;
+                bufferedWriter.write(_usuario.toString() + "\n");
+                bufferedWriter.flush();
+            } else {
+                bufferedWriter.write(linha + "\n");
+                bufferedWriter.flush();
+            }
+        }
+
+        bufferedWriter.close();
+        bufferedReader.close();
+        usuariosFile.delete();
+        tempFile.renameTo(usuariosFile);
+
+        return hasBeenUpdated;
+    }
+
+    public boolean delete(Integer _id) throws IOException {
+        File usuariosFile = new File("files/", "Usuario.txt");
+        File tempFile = new File("files/", "tempFile.txt");
+
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(usuariosFile));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tempFile, false));
+
+        boolean hasBeenDeleted = false;
+        int i = 0;
+        for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine(), i++) {
+            if (Integer.parseInt(linha.split(";")[0]) == _id) {
+                hasBeenDeleted = true;
+                continue;
+            }
+
+            bufferedWriter.write(linha + "\n");
+            bufferedWriter.flush();
+        }
+
+        bufferedReader.close();
+        bufferedWriter.close();
+        usuariosFile.delete();
+        tempFile.renameTo(usuariosFile);
+
+        return hasBeenDeleted;
+    }
+
+    public PilhaUsuario getAllUsuarios() throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("files/Usuario.txt"));
+        PilhaUsuario pilhaUsuario = new PilhaUsuario();
+
+        for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine()) {
+            Usuario _usuario = new Usuario(linha);
+
+            pilhaUsuario.empilhar(_usuario);
+        }
+
+        bufferedReader.close();
+        return pilhaUsuario;
+    }
 
     // retorna usuario atraves do (cpf || email) && senha
     public Usuario loginUsuario(String key, String password) throws IOException {
@@ -103,9 +198,7 @@ public class UsuarioAdminManipuladorArquivo {
         print.flush();
         print.close();
         writer.close();
-
     }
-
 
     public int retornaId(int digitos) {
         digitos = 6;

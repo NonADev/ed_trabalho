@@ -12,12 +12,18 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String _nome) {
-        this.nome = _nome;
+    public String toString() {
+        return String.format("%s;%s;%s;%s;%s;%s;%s", this.getId(), this.getNome(), this.getRG(), this.getCPF(), this.getSexo(), this.getEmail(), this.getSenha());
     }
 
-    public static void test() {
-
+    public Usuario(String _linha) {
+        this.id = Integer.parseInt(_linha.split(";")[0]);
+        this.nome = _linha.split(";")[1];
+        this.CPF = _linha.split(";")[2];
+        this.email = _linha.split(";")[3];
+        this.senha = _linha.split(";")[4];
+        this.RG = _linha.split(";")[5];
+        this.sexo = _linha.split(";")[6];
     }
 
     public Integer getId() {

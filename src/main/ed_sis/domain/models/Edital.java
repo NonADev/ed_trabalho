@@ -1,8 +1,5 @@
 package main.ed_sis.domain.models;
 
-import main.ed_sis.domain.estruturas.ListaDuplamenteEncadeadaCampus;
-import main.ed_sis.domain.estruturas.PilhaUsuario;
-
 public class Edital {
     private int id;
     private String definicao_curso;
@@ -11,6 +8,12 @@ public class Edital {
     private int qtd_vagas_ampla;
     private int qtd_vagas_afirmativas;
     private int qtd_vagas_deficientes;
+
+    public Edital(){}
+
+    public Edital(String definicao_curso){
+        this.definicao_curso = definicao_curso;
+    }
 
     public int getId() {
         return id;

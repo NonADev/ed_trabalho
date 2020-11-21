@@ -42,7 +42,7 @@ public class PilhaUsuario {
     public void print() {
         if (dado != null) {
             for (int i = 0; i < dado.length; i++) {
-                System.out.println(dado[i].getNome());
+                System.out.println(dado[i].toString());
             }
         }
     }
