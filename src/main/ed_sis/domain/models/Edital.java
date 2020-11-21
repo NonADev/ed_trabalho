@@ -1,6 +1,6 @@
 package main.ed_sis.domain.models;
 
-import main.ed_sis.domain.estruturas.ListaDuplamenteCampus;
+import main.ed_sis.domain.estruturas.ListaDuplamenteEncadeadaCampus;
 import main.ed_sis.domain.estruturas.PilhaUsuario;
 
 public class Edital {
@@ -11,9 +11,6 @@ public class Edital {
     private int qtd_vagas_ampla;
     private int qtd_vagas_afirmativas;
     private int qtd_vagas_deficientes;
-
-    private PilhaUsuario pilha_documentos;
-    private ListaDuplamenteCampus lista_dupla_encadeada_campus;
 
     public int getId() {
         return id;
@@ -69,21 +66,5 @@ public class Edital {
 
     public void setQtd_vagas_deficientes(int qtd_vagas_deficientes) {
         this.qtd_vagas_deficientes = qtd_vagas_deficientes;
-    }
-
-    public PilhaUsuario getPilha_documentos() {
-        return pilha_documentos;
-    }
-
-    public void setPilha_documentos(PilhaUsuario pilha_documentos) {
-        this.pilha_documentos = pilha_documentos;
-    }
-
-    public ListaDuplamenteCampus getLista_dupla_encadeada_campus() {
-        return lista_dupla_encadeada_campus;
-    }
-
-    public void setLista_dupla_encadeada_campus(ListaDuplamenteCampus lista_dupla_encadeada_campus) {
-        this.lista_dupla_encadeada_campus = lista_dupla_encadeada_campus;
     }
 }

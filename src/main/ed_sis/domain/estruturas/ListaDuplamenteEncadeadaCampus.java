@@ -3,7 +3,7 @@ package main.ed_sis.domain.estruturas;
 
 import main.ed_sis.domain.models.Campus;
 
-public class ListaDuplamenteCampus {
+public class ListaDuplamenteEncadeadaCampus {
     private NoCampus head;
 
     public Campus rmPos(int pos) {
