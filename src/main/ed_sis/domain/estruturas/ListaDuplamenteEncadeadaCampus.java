@@ -142,10 +142,10 @@ public class ListaDuplamenteEncadeadaCampus {
         NoCampus aux = head;
         if (head == null) return;
         do {
-            System.out.println(aux.campus.getNome());
+            System.out.println(aux.campus.toString());
             aux = aux.proximo;
         } while (aux.proximo != head);
-        if (aux != head) System.out.println(aux.campus.getNome());
+        if (aux != head) System.out.println(aux.campus.toString().replace("\n",""));
     }
 
     private static class NoCampus {

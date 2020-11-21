@@ -7,13 +7,24 @@ public class Campus {
     private String CEP;
     private String rua;
     private String bairro;
-    private String numero;
+    private Integer numero;
 
     public Campus() {
     }
 
-    public Campus(String _nome) {
-        this.nome = _nome;
+    public Campus(String _linha) {
+        this.setId(Integer.parseInt(_linha.split(";")[0]));
+        this.setNome(_linha.split(";")[1]);
+        this.setCEP(_linha.split(";")[2]);
+        this.setEstado(_linha.split(";")[3]);
+        this.setBairro(_linha.split(";")[4]);
+        this.setRua(_linha.split(";")[5]);
+        this.setNumero(Integer.parseInt(_linha.split(";")[6]));
+    }
+
+    public String toString() {
+        return String.format("%s;%s;%s;%s;%s;%s;%s",
+                this.getId(), this.getNome(), this.getCEP(), this.getEstado(), this.getBairro(), this.getRua(), this.getNumero());
     }
 
     public Integer getId() {
@@ -64,12 +75,11 @@ public class Campus {
         this.bairro = bairro;
     }
 
-    public String getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
-
 }

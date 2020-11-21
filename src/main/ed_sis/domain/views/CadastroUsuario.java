@@ -1,6 +1,6 @@
 package main.ed_sis.domain.views;
 
-import main.ed_sis.domain.controllers.ManipuladorArquivo;
+import main.ed_sis.domain.controllers.UsuarioAdminManipuladorArquivo;
 import main.ed_sis.domain.models.Usuario;
 
 import javax.swing.*;
@@ -54,7 +54,7 @@ public class CadastroUsuario extends JFrame {
 
 					usuario.setSexo(comboBox.getSelectedItem().toString());
 					usuario.setRG(textField_3.getText());
-					ManipuladorArquivo manipula = new ManipuladorArquivo();
+					UsuarioAdminManipuladorArquivo manipula = new UsuarioAdminManipuladorArquivo();
 					try {
 						manipula.insereUsuario(usuario);
 						JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso.");

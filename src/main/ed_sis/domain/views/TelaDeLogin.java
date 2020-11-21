@@ -1,6 +1,6 @@
 package main.ed_sis.domain.views;
 
-import main.ed_sis.domain.controllers.ManipuladorArquivo;
+import main.ed_sis.domain.controllers.UsuarioAdminManipuladorArquivo;
 import main.ed_sis.domain.models.Admin;
 import main.ed_sis.domain.models.Usuario;
 
@@ -91,7 +91,7 @@ public class TelaDeLogin extends JFrame {
 					JOptionPane.showMessageDialog(null, "Preencha todos os campos");
 				} else {
 
-					ManipuladorArquivo manipula = new ManipuladorArquivo();
+					UsuarioAdminManipuladorArquivo manipula = new UsuarioAdminManipuladorArquivo();
 
 					try {
 						Admin admin = manipula.loginAdmin(textFieldLogin.getText(), password);

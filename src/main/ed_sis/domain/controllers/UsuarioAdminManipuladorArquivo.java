@@ -6,7 +6,7 @@ import main.ed_sis.domain.models.Usuario;
 import java.io.*;
 import java.util.Random;
 
-public class ManipuladorArquivo {
+public class UsuarioAdminManipuladorArquivo {
 
     // retorna usuario atraves do (cpf || email) && senha
     public Usuario loginUsuario(String key, String password) throws IOException {
@@ -94,7 +94,7 @@ public class ManipuladorArquivo {
         String nomeArquivo = "Usuario.txt";
         File arq = new File("files/", nomeArquivo);
 
-        String conteudo = retornarId(6) + ";" + usuario.getNome() + ";" + usuario.getCPF() + ";" + usuario.getEmail()
+        String conteudo = retornaId(6) + ";" + usuario.getNome() + ";" + usuario.getCPF() + ";" + usuario.getEmail()
                 + ";" + usuario.getSenha() + ";" + usuario.getRG() + ";" + usuario.getSexo() + "\n";
         FileWriter writer = new FileWriter(arq, true);
         PrintWriter print = new PrintWriter(writer);
@@ -107,13 +107,13 @@ public class ManipuladorArquivo {
     }
 
 
-    public int retornarId(int digitos) {
+    public int retornaId(int digitos) {
+        digitos = 6;
 
         int minimum = (int) Math.pow(10, digitos - 1);
         int maximum = (int) Math.pow(10, digitos) - 1;
         Random random = new Random();
         return minimum + random.nextInt((maximum - minimum) + 1);
-
     }
 
     public static Double[] quickSort(Double v[], int esquerda, int direita) {
