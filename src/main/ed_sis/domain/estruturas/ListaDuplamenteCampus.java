@@ -6,18 +6,6 @@ import main.ed_sis.domain.models.Campus;
 public class ListaDuplamenteCampus {
     private NoCampus head;
 
-    public static void main(String[] args) {
-        ListaDuplamenteCampus a = new ListaDuplamenteCampus();
-        a.addInicio(new Campus("a"));
-        a.addFinal(new Campus("b"));
-        a.addPos(new Campus("c"), 2);
-        a.rmInicio();
-        a.rmFinal();
-        a.rmPos(0);
-
-        a.print();
-    }
-
     public Campus rmPos(int pos) {
         Campus toReturn = null;
         if (head == null) {
