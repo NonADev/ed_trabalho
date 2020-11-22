@@ -5,25 +5,28 @@ import main.ed_sis.domain.models.Edital;
 public class ListaEncadeadaEdital {
     private NoEdital head;
 
-    public static void main(String[] args) {
-        ListaEncadeadaEdital l = new ListaEncadeadaEdital();
-
-        l.addInicio(new Edital("aaa"));
-        l.addFinal(new Edital("bbb"));
-        l.addPos(new Edital("ccc"), 2);
-
+//    public static void main(String[] args) {
+//        ListaEncadeadaEdital l = new ListaEncadeadaEdital();
+//
+//        l.addInicio(new Edital("aaa"));
+//        l.addFinal(new Edital("bbb"));
+//        l.addPos(new Edital("ccc"), 2);
+//
 //        l.rmInicio();
 //        l.rmFinal();
-
-        l.print();
-    }
+//        l.rmPos(2);
+//
+//        l.print();
+//    }
 
     public Edital rmPos(int pos) {
         if (head == null)
             return null;
-        else if (pos==0)
+        else if (pos > lenght() - 1 || pos < 0)
+            throw new IllegalArgumentException();
+        else if (pos == 0)
             return rmInicio();
-        else if (pos==lenght()-1)
+        else if (pos == lenght() - 1)
             return rmFinal();
 
         NoEdital aux = head;
@@ -48,7 +51,7 @@ public class ListaEncadeadaEdital {
             Edital toReturn = head.edital;
             head = null;
             return toReturn;
-        } else if(lenght() == 2) {
+        } else if (lenght() == 2) {
             Edital toReturn = head.proximo.edital;
             head.proximo = head;
             return toReturn;
@@ -163,7 +166,7 @@ public class ListaEncadeadaEdital {
         NoEdital aux = head;
 
         do {
-            System.out.println(aux.edital.getDefinicao_curso());
+            System.out.println(aux.edital.toString());
             aux = aux.proximo;
         } while (aux != head);
     }

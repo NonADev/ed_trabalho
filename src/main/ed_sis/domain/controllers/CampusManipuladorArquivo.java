@@ -89,9 +89,7 @@ public class CampusManipuladorArquivo {
         ListaDuplamenteEncadeadaCampus listaDuplamenteEncadeadaCampus = new ListaDuplamenteEncadeadaCampus();
 
         for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine()) {
-            Campus _campus = new Campus(linha);
-
-            listaDuplamenteEncadeadaCampus.addFinal(_campus);
+            listaDuplamenteEncadeadaCampus.addFinal(new Campus(linha));
         }
 
         bufferedReader.close();
@@ -109,9 +107,7 @@ public class CampusManipuladorArquivo {
         bufferedWriter.close();
     }
 
-    public int retornaId(int digitos) {
-        digitos = 6;
-
+    public static int retornaId(int digitos) {
         int minimum = (int) Math.pow(10, digitos - 1);
         int maximum = (int) Math.pow(10, digitos) - 1;
         Random random = new Random();
