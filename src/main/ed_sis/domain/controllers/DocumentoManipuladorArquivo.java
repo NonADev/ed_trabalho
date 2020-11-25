@@ -49,6 +49,27 @@ public class DocumentoManipuladorArquivo {
         return null;
     }
 
+    public Documento[] findByUsuarioId(Integer _id) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(documentoFile));
+
+        Documento[] documentos = new Documento[0];
+
+        for (String linha = reader.readLine(); linha != null; linha = reader.readLine()) {
+            if (new Documento(linha).getId_usuario().equals(_id)) {
+                Documento[] aux = new Documento[documentos.length + 1];
+
+                for (int i = 0; i < documentos.length; i++) {
+                    aux[i] = documentos[i];
+                }
+
+                aux[aux.length - 1] = new Documento(linha);
+                documentos = aux;
+            }
+        }
+
+        return documentos;
+    }
+
     public boolean delete(Integer _id) throws IOException {
         File tempFile = new File("files/", "tempFile.txt");
 

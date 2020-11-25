@@ -2,24 +2,23 @@ package main.ed_sis.domain.controllers;
 
 import main.ed_sis.domain.estruturas.ListaEncadeadaEdital;
 import main.ed_sis.domain.models.Campus;
+import main.ed_sis.domain.models.Documento;
 import main.ed_sis.domain.models.Edital;
 
 import java.io.*;
 
 public class EditalManipuladorArquivo {
-    private File editalFile = new File("files/", "Edital");
+    private File editalFile = new File("files/", "Edital.txt");
 
-//    public static void main(String[] args) throws IOException {
-//        EditalManipuladorArquivo e = new EditalManipuladorArquivo();
-//        e.insertEdital(new Edital("285839;null;null;null;10;6;4"));
-//
-//        Edital a = e.findById(285839);
-//        a.setDefinicao_curso("akosdkasodkasdasdasd");
-//
-//        e.update(a);
-//
+    public static void main(String[] args) throws IOException {
+        EditalManipuladorArquivo e = new EditalManipuladorArquivo();
+
+//        e.insertEdital(new Edital("285839;null;null;null;10;6;4;4;4"));
+
+        e.getAllEditaisUserNotIncluded(456754).print();
+
 //        e.getAllEdital().print();
-//    }
+    }
 
     public void insertEdital(Edital _edital) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(editalFile, true));
@@ -107,6 +106,35 @@ public class EditalManipuladorArquivo {
         }
 
         return edital;
+    }
+
+    public ListaEncadeadaEdital getAllEditaisUserNotIncluded(Integer _id) throws IOException {
+        DocumentoManipuladorArquivo documentoManipuladorArquivo = new DocumentoManipuladorArquivo();
+
+        Documento[] documentos = documentoManipuladorArquivo.findByUsuarioId(_id);
+
+        Edital[] editals = getAllEdital().toArray();
+
+        for (int y = 0; y < documentos.length; y++) {
+            Edital[] aux = new Edital[0];
+            for (int i = 0; i < editals.length; i++) {
+                if ((documentos.length > 0 && editals.length > 0) && editals[i].getId().equals(documentos[y].getId_edital())) {//ta certo, não mexe
+                    continue;
+                } else {
+                    Edital[] aux2 = new Edital[aux.length + 1];
+
+                    for (int k = 0; k < aux.length; k++) {
+                        aux2[k] = aux[k];
+                    }
+
+                    aux2[aux2.length - 1] = editals[i];
+                    aux = aux2;
+                }
+            }
+            editals = aux;
+        }
+
+        return new ListaEncadeadaEdital().toListaEncadeada(editals);
     }
 
     public ListaEncadeadaEdital getAllEditalByCampusId(Integer _id) throws IOException {

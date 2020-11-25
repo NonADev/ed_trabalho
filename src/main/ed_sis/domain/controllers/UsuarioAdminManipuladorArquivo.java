@@ -11,12 +11,8 @@ public class UsuarioAdminManipuladorArquivo {
 //    public static void main(String[] args) throws IOException {
 //        UsuarioAdminManipuladorArquivo usuarioAdminManipuladorArquivo = new UsuarioAdminManipuladorArquivo();
 //
-//        Usuario u = usuarioAdminManipuladorArquivo.getUsuarioById(850785);
-//        u.setNome("wellingtron");
-//
-//        usuarioAdminManipuladorArquivo.update(u);
-//
 //        PilhaUsuario pilhaUsuario = usuarioAdminManipuladorArquivo.getAllUsuarios();
+//
 //        pilhaUsuario.print();
 //    }
 

@@ -1,5 +1,6 @@
 package main.ed_sis.domain.estruturas;
 
+import main.ed_sis.domain.models.Campus;
 import main.ed_sis.domain.models.Edital;
 
 public class ListaEncadeadaEdital {
@@ -38,6 +39,28 @@ public class ListaEncadeadaEdital {
         Edital toReturn = aux.proximo.edital;
 
         aux.proximo = aux.proximo.proximo;
+
+        return toReturn;
+    }
+
+    public Edital[] toArray() {
+        Edital[] toReturn = new Edital[lenght()];
+
+        int originalLength = lenght();
+
+        for (int i = 0; i < originalLength; i++) {
+            toReturn[i] = rmInicio();
+        }
+
+        return toReturn;
+    }
+
+    public ListaEncadeadaEdital toListaEncadeada(Edital[] e) {
+        ListaEncadeadaEdital toReturn = new ListaEncadeadaEdital();
+
+        for (int i = 0; i < e.length; i++) {
+            toReturn.addFinal(e[i]);
+        }
 
         return toReturn;
     }

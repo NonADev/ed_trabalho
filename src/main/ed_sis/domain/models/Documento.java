@@ -7,6 +7,7 @@ public class Documento {
     private String nome;
     private String valor;
     private Integer id_edital;
+    private Integer id_usuario;
 
     public Documento() {
     }
@@ -16,11 +17,21 @@ public class Documento {
         this.setNome(_linha.split(";")[1]);
         this.setValor(_linha.split(";")[2]);
         this.setId_edital(Integer.parseInt(_linha.split(";")[3]));
+        this.setId_usuario(Integer.parseInt(_linha.split(";")[4]));
     }
 
     public String toString() {
-        return String.format("%s;%s;%s;%s",
-                this.id, this.nome, this.valor, this.id_edital);
+        return String.format("%s;%s;%s;%s;%s",
+                this.id, this.nome, this.valor, this.id_edital,
+                this.id_usuario);
+    }
+
+    public Integer getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(Integer id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public Integer getId() {

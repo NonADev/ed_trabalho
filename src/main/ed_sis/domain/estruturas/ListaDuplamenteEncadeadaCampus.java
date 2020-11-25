@@ -138,6 +138,18 @@ public class ListaDuplamenteEncadeadaCampus {
         return c;
     }
 
+    public Campus[] toArray() {
+        Campus[] toReturn = new Campus[length()];
+
+        int originalLength = length();
+
+        for (int i = 0; i < originalLength; i++) {
+            toReturn[i] = rmInicio();
+        }
+
+        return toReturn;
+    }
+
     public void print() {
         NoCampus aux = head;
         if (head == null) return;
@@ -145,7 +157,7 @@ public class ListaDuplamenteEncadeadaCampus {
             System.out.println(aux.campus.toString());
             aux = aux.proximo;
         } while (aux.proximo != head);
-        if (aux != head) System.out.println(aux.campus.toString().replace("\n",""));
+        if (aux != head) System.out.println(aux.campus.toString().replace("\n", ""));
     }
 
     private static class NoCampus {
