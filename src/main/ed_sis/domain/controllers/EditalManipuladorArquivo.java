@@ -103,33 +103,33 @@ public class EditalManipuladorArquivo {
         return edital;
     }
 
-    public ListaEncadeadaEdital getAllEditaisUserNotIncluded(Integer _id) throws IOException {
+    public ListaEncadeadaEdital getAllEditaisUserNotIncluded(Integer _usuario_id, Integer _curso_id) throws IOException {
         DocumentoManipuladorArquivo documentoManipuladorArquivo = new DocumentoManipuladorArquivo();
 
-        Documento[] documentos = documentoManipuladorArquivo.findByUsuarioId(_id);
+        Documento[] documentos = documentoManipuladorArquivo.findByUsuarioId(_usuario_id);
 
-        Edital[] editals = getAllEdital().toArray();
+        Edital[] editais = getAllEdital().toArray();
 
         for (int y = 0; y < documentos.length; y++) {
             Edital[] aux = new Edital[0];
-            for (int i = 0; i < editals.length; i++) {
-                if ((documentos.length > 0 && editals.length > 0) && editals[i].getId().equals(documentos[y].getId_edital())) {//ta certo, não mexe
+            for (int i = 0; i < editais.length; i++) {
+                if ((documentos.length > 0 && editais.length > 0) && editais[i].getId().equals(documentos[y].getId_edital())) {//ta certo, não mexe
                     continue;
-                } else {
+                } else if (editais[i].getId_curso().equals(_curso_id)) {
                     Edital[] aux2 = new Edital[aux.length + 1];
 
                     for (int k = 0; k < aux.length; k++) {
                         aux2[k] = aux[k];
                     }
 
-                    aux2[aux2.length - 1] = editals[i];
+                    aux2[aux2.length - 1] = editais[i];
                     aux = aux2;
                 }
             }
-            editals = aux;
+            editais = aux;
         }
 
-        return new ListaEncadeadaEdital().toListaEncadeada(editals);
+        return new ListaEncadeadaEdital().toListaEncadeada(editais);
     }
 
     public ListaEncadeadaEdital getAllEditalByCampusId(Integer _id) throws IOException {

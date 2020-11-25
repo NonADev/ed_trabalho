@@ -13,7 +13,7 @@ public class Usuario {
     }
 
     public String toString() {
-        return String.format("%s;%s;%s;%s;%s;%s;%s", this.getId(), this.getNome(), this.getRG(), this.getCPF(), this.getSexo(), this.getEmail(), this.getSenha());
+        return String.format("%s;%s;%s;%s;%s;%s;%s", this.getId(), this.getNome(), this.getCPF(), this.getEmail(), this.getSenha(), this.getRG(), this.getSexo());
     }
 
     public Usuario(String _linha) {
