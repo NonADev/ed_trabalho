@@ -1,6 +1,5 @@
 package main.ed_sis.domain.controllers;
 
-import main.ed_sis.domain.models.Campus;
 import main.ed_sis.domain.models.Curso;
 
 import java.io.*;
@@ -94,7 +93,7 @@ public class CursoManipuladorArquivo {
     public Curso[] findByCampusId(Integer _id) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(cursoFile));
 
-        Curso[] cursos = new Curso[1];
+        Curso[] cursos = new Curso[0];
 
         for (String linha = reader.readLine(); linha != null; linha = reader.readLine()) {
             if (new Curso(linha).getId_campus().equals(_id)) {

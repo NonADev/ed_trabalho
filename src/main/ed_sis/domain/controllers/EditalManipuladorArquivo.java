@@ -10,11 +10,11 @@ import java.io.*;
 public class EditalManipuladorArquivo {
     private File editalFile = new File("files/", "Edital.txt");
 
-    public static void main(String[] args) throws IOException {
-        EditalManipuladorArquivo e = new EditalManipuladorArquivo();
-
-        e.getAllEditaisUserNotIncluded(456754).print();
-    }
+//    public static void main(String[] args) throws IOException {
+//        EditalManipuladorArquivo e = new EditalManipuladorArquivo();
+//
+//        e.getAllEditaisUserNotIncluded(456754).print();
+//    }
 
     public void insertEdital(Edital _edital) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(editalFile, true));
