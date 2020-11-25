@@ -8,6 +8,18 @@ import java.io.*;
 public class DocumentoManipuladorArquivo {
     private File documentoFile = new File("files/", "Documento.txt");
 
+//    public static void main(String[] args) throws IOException {
+//        DocumentoManipuladorArquivo d = new DocumentoManipuladorArquivo();
+//
+//        Documento[] documentos = d.getAllDocumentos();
+//
+//        documentos = quickSort(documentos, 0, documentos.length-1);
+//
+//        for (int i=0;i<documentos.length;i++){
+//            System.out.println(documentos[i].getId());
+//        }
+//    }
+
     public void insertDocumento(Documento documento) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(documentoFile, true));
 
@@ -131,5 +143,36 @@ public class DocumentoManipuladorArquivo {
         tempFile.renameTo(documentoFile);
 
         return hasBeenUpdated;
+    }
+
+    public static Documento[] quickSort(Documento v[], int esquerda, int direita) {
+        int esq = esquerda;
+        int dir = direita;
+        Documento pivo = v[(esq + dir) / 2];
+        Documento troca;
+
+        while (esq <= dir) {
+            while (v[esq].getId() < pivo.getId()) {
+                esq = esq + 1;
+            }
+            while (v[dir].getId() > pivo.getId()) {
+                dir = dir - 1;
+            }
+            if (esq <= dir) {
+                troca = v[esq];
+                v[esq] = v[dir];
+                v[dir] = troca;
+                esq = esq + 1;
+                dir = dir - 1;
+            }
+        }
+
+        if (dir > esquerda)
+            quickSort(v, esquerda, dir);
+
+        if (esq < direita)
+            quickSort(v, esq, direita);
+
+        return v;
     }
 }
