@@ -2,6 +2,7 @@ package main.ed_sis.domain.controllers;
 
 import main.ed_sis.domain.models.Curso;
 import main.ed_sis.domain.models.Documento;
+import main.ed_sis.domain.models.Usuario;
 
 import java.io.*;
 
@@ -19,6 +20,27 @@ public class DocumentoManipuladorArquivo {
 //            System.out.println(documentos[i].getId());
 //        }
 //    }
+
+    public void cadastrarUsuario(Usuario usuario, Integer id_edital) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(documentoFile, true));
+
+        Documento documento = new Documento();
+
+        documento.setId_usuario(usuario.getId());
+        documento.setId_edital(id_edital);
+
+        documento.setId(CampusManipuladorArquivo.retornaId(6));
+        documento.setNome("RG");
+        documento.setValor(usuario.getRG());
+
+        insertDocumento(documento);
+
+        documento.setId(CampusManipuladorArquivo.retornaId(6));
+        documento.setNome("CPF");
+        documento.setValor(usuario.getCPF());
+
+        insertDocumento(documento);
+    }
 
     public void insertDocumento(Documento documento) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(documentoFile, true));

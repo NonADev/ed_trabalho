@@ -1,7 +1,6 @@
 package main.ed_sis.domain.controllers;
 
 import main.ed_sis.domain.estruturas.ListaEncadeadaEdital;
-import main.ed_sis.domain.models.Campus;
 import main.ed_sis.domain.models.Documento;
 import main.ed_sis.domain.models.Edital;
 
