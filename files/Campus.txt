@@ -1,4 +1,6 @@
-727640;asd;jandira;place_holder;place_holder;place_holder;4
-173462;wesley;place_holder;place_holder;place_holder;place_holder;4
-565797;wesley;place_holder;place_holder;place_holder;place_holder;4
-983541;wesley;place_holder;place_holder;place_holder;place_holder;4
+230811;krustacio;null;null;null;null;4
+228734;null;null;null;null;null;3
+977793;null;null;null;null;null;1
+826657;null;null;null;null;null;2
+552417;null;null;null;null;null;0
+682434;null;null;null;null;null;2

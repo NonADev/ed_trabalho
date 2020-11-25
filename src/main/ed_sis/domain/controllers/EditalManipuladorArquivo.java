@@ -1,6 +1,7 @@
 package main.ed_sis.domain.controllers;
 
 import main.ed_sis.domain.estruturas.ListaEncadeadaEdital;
+import main.ed_sis.domain.models.Campus;
 import main.ed_sis.domain.models.Edital;
 
 import java.io.*;
@@ -106,5 +107,31 @@ public class EditalManipuladorArquivo {
         }
 
         return edital;
+    }
+
+    public ListaEncadeadaEdital getAllEditalByCampusId(Integer _id) throws IOException {
+        ListaEncadeadaEdital _lista = getAllEdital(), _toReturn = new ListaEncadeadaEdital();
+
+        while (_lista.lenght() > 0) {
+            Edital _edital = _lista.rmInicio();
+            if (_edital.getId_campus().equals(_id)) {
+                _toReturn.addFinal(_edital);
+            }
+        }
+
+        return _toReturn;
+    }
+
+    public ListaEncadeadaEdital getAllEditalByCursoId(Integer _id) throws IOException {
+        ListaEncadeadaEdital _lista = getAllEdital(), _toReturn = new ListaEncadeadaEdital();
+
+        while (_lista.lenght() > 0) {
+            Edital _edital = _lista.rmInicio();
+            if (_edital.getId_curso().equals(_id)) {
+                _toReturn.addFinal(_edital);
+            }
+        }
+
+        return _toReturn;
     }
 }

@@ -1,15 +1,33 @@
 package main.ed_sis.domain.models;
 
+import javax.print.Doc;
+
 public class Documento {
-    private int id;
+    private Integer id;
     private String nome;
     private String valor;
+    private Integer id_edital;
 
-    public int getId() {
+    public Documento() {
+    }
+
+    public Documento(String _linha) {
+        this.setId(Integer.parseInt(_linha.split(";")[0]));
+        this.setNome(_linha.split(";")[1]);
+        this.setValor(_linha.split(";")[2]);
+        this.setId_edital(Integer.parseInt(_linha.split(";")[3]));
+    }
+
+    public String toString() {
+        return String.format("%s;%s;%s;%s",
+                this.id, this.nome, this.valor, this.id_edital);
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -27,5 +45,13 @@ public class Documento {
 
     public void setValor(String valor) {
         this.valor = valor;
+    }
+
+    public Integer getId_edital() {
+        return id_edital;
+    }
+
+    public void setId_edital(Integer id_edital) {
+        this.id_edital = id_edital;
     }
 }

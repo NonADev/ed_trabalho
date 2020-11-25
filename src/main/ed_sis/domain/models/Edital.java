@@ -8,11 +8,14 @@ public class Edital {
     private Integer qtd_vagas_ampla;
     private Integer qtd_vagas_afirmativas;
     private Integer qtd_vagas_deficientes;
+    private Integer id_campus;
+    private Integer id_curso;
 
     public String toString() {
-        return String.format("%s;%s;%s;%s;%s;%s;%s",
+        return String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s",
                 this.id, this.definicao_curso, this.publico_alvo, this.periodo_inscricao,
-                this.qtd_vagas_ampla, this.qtd_vagas_afirmativas, this.qtd_vagas_deficientes);
+                this.qtd_vagas_ampla, this.qtd_vagas_afirmativas, this.qtd_vagas_deficientes, this.id_campus,
+                this.id_curso);
     }
 
     public Edital() {
@@ -26,13 +29,23 @@ public class Edital {
         this.qtd_vagas_ampla = Integer.parseInt(_linha.split(";")[4]);
         this.qtd_vagas_afirmativas = Integer.parseInt(_linha.split(";")[5]);
         this.qtd_vagas_deficientes = Integer.parseInt(_linha.split(";")[6]);
+        this.id_campus = Integer.parseInt(_linha.split(";")[7]);
+        this.id_curso = Integer.parseInt(_linha.split(";")[8]);
     }
 
-    public int getId() {
+    public Integer getId_curso() {
+        return id_curso;
+    }
+
+    public void setId_curso(Integer id_curso) {
+        this.id_curso = id_curso;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -60,27 +73,35 @@ public class Edital {
         this.periodo_inscricao = periodo_inscricao;
     }
 
-    public int getQtd_vagas_ampla() {
+    public Integer getQtd_vagas_ampla() {
         return qtd_vagas_ampla;
     }
 
-    public void setQtd_vagas_ampla(int qtd_vagas_ampla) {
+    public void setQtd_vagas_ampla(Integer qtd_vagas_ampla) {
         this.qtd_vagas_ampla = qtd_vagas_ampla;
     }
 
-    public int getQtd_vagas_afirmativas() {
+    public Integer getQtd_vagas_afirmativas() {
         return qtd_vagas_afirmativas;
     }
 
-    public void setQtd_vagas_afirmativas(int qtd_vagas_afirmativas) {
+    public void setQtd_vagas_afirmativas(Integer qtd_vagas_afirmativas) {
         this.qtd_vagas_afirmativas = qtd_vagas_afirmativas;
     }
 
-    public int getQtd_vagas_deficientes() {
+    public Integer getId_campus() {
+        return id_campus;
+    }
+
+    public void setId_campus(Integer id_campus) {
+        this.id_campus = id_campus;
+    }
+
+    public Integer getQtd_vagas_deficientes() {
         return qtd_vagas_deficientes;
     }
 
-    public void setQtd_vagas_deficientes(int qtd_vagas_deficientes) {
+    public void setQtd_vagas_deficientes(Integer qtd_vagas_deficientes) {
         this.qtd_vagas_deficientes = qtd_vagas_deficientes;
     }
 }

@@ -9,7 +9,10 @@ import java.util.Random;
 public class CampusManipuladorArquivo {
 //    public static void main(String[] args) throws IOException {
 //        CampusManipuladorArquivo campusManipuladorArquivo = new CampusManipuladorArquivo();
-//        Campus campus = campusManipuladorArquivo.findById(727640);
+//
+//        campusManipuladorArquivo.insertCampus(new Campus("826657;null;null;null;null;null;2"));
+//
+//        Campus campus = campusManipuladorArquivo.findById(230811);
 //
 //        campus.setNome("krustacio");
 //
@@ -26,7 +29,7 @@ public class CampusManipuladorArquivo {
         boolean hasBeenDeleted = false;
         int i = 0;
         for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine(), i++) {
-            if (Integer.parseInt(linha.split(";")[0]) == _id) {
+            if (new Campus(linha).getId().equals(_id)) {
                 hasBeenDeleted = true;
                 continue;
             }
@@ -53,7 +56,7 @@ public class CampusManipuladorArquivo {
         boolean hasBeenUpdated = false;
         int i = 0;
         for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine(), i++) {
-            if (Integer.parseInt(linha.split(";")[0]) == _campus.getId()) {
+            if (new Campus(linha).getId().equals(_campus.getId())) {
                 hasBeenUpdated = true;
                 bufferedWriter.write(_campus.toString() + "\n");
                 bufferedWriter.flush();
@@ -75,7 +78,7 @@ public class CampusManipuladorArquivo {
         BufferedReader bufferedReader = new BufferedReader(new FileReader("files/Campus.txt"));
 
         for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine()) {
-            if (Integer.parseInt(linha.split(";")[0]) == _id) {
+            if (new Campus(linha).getId().equals(_id)) {
                 bufferedReader.close();
                 return new Campus(linha);
             }
