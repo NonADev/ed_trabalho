@@ -13,11 +13,7 @@ public class EditalManipuladorArquivo {
     public static void main(String[] args) throws IOException {
         EditalManipuladorArquivo e = new EditalManipuladorArquivo();
 
-//        e.insertEdital(new Edital("285839;null;null;null;10;6;4;4;4"));
-
         e.getAllEditaisUserNotIncluded(456754).print();
-
-//        e.getAllEdital().print();
     }
 
     public void insertEdital(Edital _edital) throws IOException {
@@ -40,7 +36,7 @@ public class EditalManipuladorArquivo {
         boolean hasBeenUpdated = false;
         int i = 0;
         for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine(), i++) {
-            if (Integer.parseInt(linha.split(";")[0]) == _edital.getId()) {
+            if (new Edital(linha).getId().equals(_edital.getId())) {
                 hasBeenUpdated = true;
                 bufferedWriter.write(_edital.toString() + "\n");
                 bufferedWriter.flush();
@@ -67,7 +63,7 @@ public class EditalManipuladorArquivo {
         boolean hasBeenDeleted = false;
         int i = 0;
         for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine(), i++) {
-            if (Integer.parseInt(linha.split(";")[0]) == _id) {
+            if (new Edital(linha).getId().equals(_id)) {
                 hasBeenDeleted = true;
                 continue;
             }
@@ -88,7 +84,7 @@ public class EditalManipuladorArquivo {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(editalFile));
 
         for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine()) {
-            if (Integer.parseInt(linha.split(";")[0]) == _id) {
+            if (new Edital(linha).getId().equals(_id)) {
                 bufferedReader.close();
                 return new Edital(linha);
             }

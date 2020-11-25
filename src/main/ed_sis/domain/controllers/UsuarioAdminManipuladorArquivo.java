@@ -20,7 +20,7 @@ public class UsuarioAdminManipuladorArquivo {
         BufferedReader bufferedReader = new BufferedReader(new FileReader("files/Usuario.txt"));
 
         for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine()) {
-            if (Integer.parseInt(linha.split(";")[0]) == _id) {
+            if (new Usuario(linha).getId().equals(_id)) {
                 bufferedReader.close();
                 return new Usuario(linha);
             }
@@ -40,7 +40,7 @@ public class UsuarioAdminManipuladorArquivo {
         boolean hasBeenUpdated = false;
         int i = 0;
         for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine(), i++) {
-            if (Integer.parseInt(linha.split(";")[0]) == _usuario.getId()) {
+            if (new Usuario(linha).getId() == _usuario.getId()) {
                 hasBeenUpdated = true;
                 bufferedWriter.write(_usuario.toString() + "\n");
                 bufferedWriter.flush();
@@ -68,7 +68,7 @@ public class UsuarioAdminManipuladorArquivo {
         boolean hasBeenDeleted = false;
         int i = 0;
         for (String linha = bufferedReader.readLine(); linha != null; linha = bufferedReader.readLine(), i++) {
-            if (Integer.parseInt(linha.split(";")[0]) == _id) {
+            if (new Usuario(linha).getId() == _id) {
                 hasBeenDeleted = true;
                 continue;
             }
@@ -102,34 +102,18 @@ public class UsuarioAdminManipuladorArquivo {
     // retorna usuario atraves do (cpf || email) && senha
     public Usuario loginUsuario(String key, String password) throws IOException {
         BufferedReader buffReadUsuario = new BufferedReader(new FileReader("files/Usuario.txt"));
-        String linhaUsuario = buffReadUsuario.readLine();
 
         Usuario usuario = new Usuario();
-        while (true) {
-            if (linhaUsuario != null) {
-                String segments[] = linhaUsuario.split(";");
-                if (key.contains("@") && (segments[3].equals(key) && segments[4].equals(password))) {
-                    usuario.setId(Integer.parseInt(segments[0]));
-                    usuario.setNome(segments[1]);
-                    usuario.setCPF(segments[2]);
-                    usuario.setEmail(segments[3]);
-                    usuario.setSenha(segments[4]);
-                    usuario.setRG(segments[5]);
-                    usuario.setSexo(segments[6]);
-                } else if (segments[2].equals(key) && segments[4].equals(password)) {
-                    usuario.setId(Integer.parseInt(segments[0]));
-                    usuario.setNome(segments[1]);
-                    usuario.setRG(segments[2]);
-                    usuario.setEmail(segments[3]);
-                    usuario.setSenha(segments[4]);
-                    usuario.setRG(segments[5]);
-                    usuario.setSexo(segments[6]);
-                }
-            } else {
-                break;
+
+        for (String linhaUsuario = buffReadUsuario.readLine(); linhaUsuario != null; linhaUsuario = buffReadUsuario.readLine()) {
+            Usuario aux = new Usuario(linhaUsuario);
+
+            if ((key.contains("@") && (aux.getEmail().equals(key) && aux.getSenha().equals(password)))
+                    || (aux.getCPF().equals(key) && aux.getSenha().equals(password))) {
+                usuario = aux;
             }
-            linhaUsuario = buffReadUsuario.readLine();
         }
+
         buffReadUsuario.close();
         return usuario;
     }
@@ -137,44 +121,18 @@ public class UsuarioAdminManipuladorArquivo {
     // retorna aluno atraves do (cpf || email) && senha
     public Admin loginAdmin(String key, String password) throws IOException {
         BufferedReader buffReadAluno = new BufferedReader(new FileReader("files/Admin.txt"));
-        String linhaAdm = buffReadAluno.readLine();
 
         Admin admin = new Admin();
-        while (true) {
 
-            if (linhaAdm != null) {
+        for (String linhaAdm = buffReadAluno.readLine(); linhaAdm != null; linhaAdm = buffReadAluno.readLine()) {
+            Admin aux = new Admin(linhaAdm);
 
-                String segments[] = linhaAdm.split(";");
-
-                if (key.contains("@")) {
-                    if (segments[3].equals(key) && segments[4].equals(password)) {
-
-                        admin.setId(Integer.parseInt(segments[0]));
-                        admin.setNome(segments[1]);
-                        admin.setCPF(segments[2]);
-                        admin.setEmail(segments[3]);
-                        admin.setSenha(segments[4]);
-                        admin.setRG(segments[5]);
-                        admin.setSexo(segments[6]);
-                    }
-                } else {
-                    if (segments[2].equals(key) && segments[4].equals(password)) {
-
-                        admin.setId(Integer.parseInt(segments[0]));
-                        admin.setNome(segments[1]);
-                        admin.setCPF(segments[2]);
-                        admin.setEmail(segments[3]);
-                        admin.setSenha(segments[4]);
-                        admin.setRG(segments[5]);
-                        admin.setSexo(segments[6]);
-                    }
-
-                }
-
-            } else
-                break;
-            linhaAdm = buffReadAluno.readLine();
+            if ((key.contains("@") && (aux.getEmail().equals(key) && aux.getSenha().equals(password)))
+                    || (aux.getCPF().equals(key) && aux.getSenha().equals(password))) {
+                admin = aux;
+            }
         }
+
         buffReadAluno.close();
         return admin;
     }
