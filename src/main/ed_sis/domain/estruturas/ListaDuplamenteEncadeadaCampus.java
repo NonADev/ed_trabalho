@@ -150,6 +150,36 @@ public class ListaDuplamenteEncadeadaCampus {
         return toReturn;
     }
 
+    public static Double[] quickSort(Double v[], int esquerda, int direita) {
+        int esq = esquerda;
+        int dir = direita;
+        Double pivo = v[(esq + dir) / 2];
+        Double troca;
+
+        while (esq <= dir) {
+            while (v[esq] < pivo) {
+                esq = esq + 1;
+            }
+            while (v[dir] > pivo) {
+                dir = dir - 1;
+            }
+            if (esq <= dir) {
+                troca = v[esq];
+                v[esq] = v[dir];
+                v[dir] = troca;
+                esq = esq + 1;
+                dir = dir - 1;
+            }
+        }
+
+        if (dir > esquerda)
+            quickSort(v, esquerda, dir);
+        if (esq < direita)
+            quickSort(v, esq, direita);
+
+        return v;
+    }
+
     public void print() {
         NoCampus aux = head;
         if (head == null) return;
