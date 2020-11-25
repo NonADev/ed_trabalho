@@ -1,6 +1,5 @@
 package main.ed_sis.domain.estruturas;
 
-
 import main.ed_sis.domain.models.Campus;
 
 public class ListaDuplamenteEncadeadaCampus {

@@ -1,7 +1,5 @@
 package main.ed_sis.domain.models;
 
-import javax.print.Doc;
-
 public class Documento {
     private Integer id;
     private String nome;

@@ -22,8 +22,6 @@ public class DocumentoManipuladorArquivo {
 //    }
 
     public void cadastrarUsuario(Usuario usuario, Integer id_edital) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(documentoFile, true));
-
         Documento documento = new Documento();
 
         documento.setId_usuario(usuario.getId());
