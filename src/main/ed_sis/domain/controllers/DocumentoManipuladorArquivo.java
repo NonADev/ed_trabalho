@@ -12,13 +12,17 @@ public class DocumentoManipuladorArquivo {
 //    public static void main(String[] args) throws IOException {
 //        DocumentoManipuladorArquivo d = new DocumentoManipuladorArquivo();
 //
-//        Documento[] documentos = d.getAllDocumentos();
+////        Documento[] documentos = d.getAllDocumentos();
+////
+////        documentos = quickSort(documentos, 0, documentos.length-1);
+////
+////        for (int i=0;i<documentos.length;i++){
+////            System.out.println(documentos[i].getId());
+////        }
 //
-//        documentos = quickSort(documentos, 0, documentos.length-1);
+//        UsuarioAdminManipuladorArquivo u = new UsuarioAdminManipuladorArquivo();
 //
-//        for (int i=0;i<documentos.length;i++){
-//            System.out.println(documentos[i].getId());
-//        }
+//        d.cadastrarUsuario(u.getUsuarioById(456754),888913);
 //    }
 
     public void cadastrarUsuario(Usuario usuario, Integer id_edital) throws IOException {
