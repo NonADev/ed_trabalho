@@ -9,21 +9,21 @@ import java.io.*;
 public class DocumentoManipuladorArquivo {
     private File documentoFile = new File("files/", "Documento.txt");
 
-    public static void main(String[] args) throws IOException {
-        DocumentoManipuladorArquivo d = new DocumentoManipuladorArquivo();
-
-//        Documento[] documentos = d.getAllDocumentos();
+//    public static void main(String[] args) throws IOException {
+//        DocumentoManipuladorArquivo d = new DocumentoManipuladorArquivo();
 //
-//        documentos = quickSort(documentos, 0, documentos.length-1);
+////        Documento[] documentos = d.getAllDocumentos();
+////
+////        documentos = quickSort(documentos, 0, documentos.length-1);
+////
+////        for (int i=0;i<documentos.length;i++){
+////            System.out.println(documentos[i].getId());
+////        }
 //
-//        for (int i=0;i<documentos.length;i++){
-//            System.out.println(documentos[i].getId());
-//        }
-
-        UsuarioAdminManipuladorArquivo u = new UsuarioAdminManipuladorArquivo();
-
-        d.cadastrarUsuario(u.getUsuarioById(456754),888913);
-    }
+//        UsuarioAdminManipuladorArquivo u = new UsuarioAdminManipuladorArquivo();
+//
+//        d.cadastrarUsuario(u.getUsuarioById(456754),888913);
+//    }
 
     public void cadastrarUsuario(Usuario usuario, Integer id_edital) throws IOException {
         Documento documento = new Documento();

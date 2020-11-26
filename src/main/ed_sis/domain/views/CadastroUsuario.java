@@ -47,7 +47,6 @@ public class CadastroUsuario extends JFrame {
 
 					Usuario usuario = new Usuario();
 					usuario.setNome(textField.getText());
-					usuario.setRG(textField_1.getText());
 					usuario.setCPF(textField_1.getText());
 					usuario.setEmail(textField_2.getText());
 					usuario.setSenha(password);
@@ -111,7 +110,7 @@ public class CadastroUsuario extends JFrame {
 		textField_3.setBounds(204, 117, 229, 26);
 		contentPane.add(textField_3);
 
-		JLabel label_3 = new JLabel("Orientação Sexual");
+		JLabel label_3 = new JLabel("Gênero");
 		label_3.setBounds(24, 170, 168, 16);
 		contentPane.add(label_3);
 
